@@ -59,13 +59,14 @@ async function checkLoginCredential(req, res) {
             const token=setUser(user)
             res.cookie("uid", token, { 
                 httpOnly: true, // The cookie is not accessible via JavaScript
-                sameSite: "strict", // Restrict the cookie to same-site requests
-                path: "/"
+                sameSite: "none", // Restrict the cookie to same-site requests
+                path: "/",
+                secure:true
               });
             if(user.admin===true) {
                 const atoken=setAdmin(user)
                 //res.cookie("aid",atoken);
-                res.cookie("aid", atoken, { httpOnly: true, sameSite: "strict",path:"/" });
+                res.cookie("aid", atoken, { httpOnly: true, sameSite: "none",path:"/",secure:true });
                 return res.json({success:true,message:"logged in successfully",user:user})//create cookie
                 // return res.redirect("/happytails/api/admin")
             }
