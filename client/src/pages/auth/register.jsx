@@ -53,11 +53,11 @@ const AuthRegister = () => {
       if (success) {
         // Store the token in localStorage
         if (token) {
-          document.cookie = `uid=${token}; path=/; SameSite=Strict;`;
+          document.cookie = `uid=${token}; path=/; SameSite=None; Secure;`;
           console.log("boolean",isadmin)
           if (!firsttime) { //if not first time send redirect to home 
             if(isadmin) {
-              document.cookie = `aid=${atoken}; path=/; SameSite=Strict;`;
+              document.cookie = `aid=${atoken}; path=/; SameSite=None; Secure;`;
               dispatch(setAuthenticated({ 
                 isAuthenticated: true, 
                 isVerified: true, 
