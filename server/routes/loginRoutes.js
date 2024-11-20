@@ -87,9 +87,22 @@ router.get("/happytails/main",
     }
 );
 router.get('/auth/logout', (req, res) => {
-    res.clearCookie('uid', { path: '/', httpOnly: true, sameSite: 'strict' });
-    res.clearCookie('aid', { path: '/', httpOnly: true, sameSite: 'strict' });
-    return res.status(200).json({ success: true, message: 'Logged out successfully!' });
-  });
+    res.clearCookie('uid', { 
+        path: '/', 
+        httpOnly: true, 
+        sameSite: 'None', 
+        secure: true // Include secure to match cookie attributes
+    });
+    res.clearCookie('aid', { 
+        path: '/', 
+        httpOnly: true, 
+        sameSite: 'None', 
+        secure: true // Include secure to match cookie attributes
+    });
+    return res.status(200).json({ 
+        success: true, 
+        message: 'Logged out successfully!' 
+    });
+});
 //export module
 module.exports=router;
