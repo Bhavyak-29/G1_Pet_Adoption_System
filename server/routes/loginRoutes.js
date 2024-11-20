@@ -56,6 +56,21 @@ router.get("/happytails/main",
         const user = req.user.user
         console.log(user)
         // Generate the script for postMessage
+        res.cookie('uid', token, {
+            httpOnly: true,
+            secure: true, // Required for SameSite=None
+            sameSite: 'None', // Enable cross-site cookie sharing
+            path: '/',
+        });
+
+        if (atoken) {
+            res.cookie('aid', atoken, {
+                httpOnly: true,
+                secure: true, // Required for SameSite=None
+                sameSite: 'None', // Enable cross-site cookie sharing
+                path: '/',
+            });
+        }
         //console.log(isadmin)
         const script = `
           <script>
