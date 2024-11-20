@@ -10,6 +10,7 @@ const OAuth2 = google.auth.OAuth2;
 //set up for sending OTP verification emails
 const setGmailForOTP = async () => {
     try {
+        console.log("inside setgmail")
         const oauth2Client = new OAuth2( //use google OAuth2
             process.env.CLIENT_ID_SMTP,
             process.env.CLIENT_SECRET_SMTP,
@@ -27,6 +28,7 @@ const setGmailForOTP = async () => {
                 resolve(token); 
             });
         });
+        console.log("before transportter")
         const transporter = nodemailer.createTransport({ //specify transport details
             service: "gmail",
             auth: {
@@ -38,6 +40,7 @@ const setGmailForOTP = async () => {
               refreshToken: process.env.REFRESH_TOKEN,
             },
         });
+        console.log("returning transoprter")
         return transporter;
     } catch (error) {
         res.json({
@@ -50,6 +53,7 @@ const setGmailForOTP = async () => {
 //send OTP email 
 const sendGmailOTP = async ({_id,email},res) => {
     try {
+        console.log("inside sendgmail")
         const otp = `${Math.floor(Math.random() * 9000 + 1000)}` //create 4 digit OTP
         const mailOptions = { //email details
             from: process.env.USER_EMAIL,
@@ -83,8 +87,11 @@ const sendGmailOTP = async ({_id,email},res) => {
             expireAt: Date.now() + 3600000,
             email:email,
         });
+        console.log("before save")
         await newOTPVerification.save();
+        console.log("after save")
         let emailTransporter = await setGmailForOTP();
+        console.log("after setgmail otp call and before sendmail")
         await emailTransporter.sendMail(mailOptions); //send OTP email
     } catch (error) {
         res.json({
@@ -118,7 +125,7 @@ async function checkOTP(req,res){
                         await loginschema.updateOne({email:email},{verified:true});
                         await OTPverification.deleteMany({email:email});
                         //res.redirect("/login") //redirect to login after verification
-                        res.json({success : true,message:"verified",isVerified:true,user:{email:email,isVerified:true}})
+                        res.json({success : true,message:"verified",isVerified:true,user:{username:username,email:email,isVerified:true}})
                     }
                 }
             }
