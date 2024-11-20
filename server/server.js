@@ -63,8 +63,8 @@ app.timeout=30000
 const start = async ()=>{
     try {
         await connectDB(process.env.MONGO_URI)
-        app.listen(PORT, '0.0.0.0', () => {
-          console.log(`Server running on http://0.0.0.0:${PORT}`);
+        app.listen(port, '0.0.0.0', () => {
+          console.log(`Server running on http://0.0.0.0:${port}`);
         });
     } catch (error) {
         console.log(error)
