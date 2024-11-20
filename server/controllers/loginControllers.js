@@ -31,6 +31,7 @@ async function createLoginData(req, res) {
             return res.json({success:true,message:"email sent successfully"})
         }
     } catch (error) {
+        console.log(error);
         return res.json({success:false, message: "An error occurred during signup.", error: error.message });
     }
 }
