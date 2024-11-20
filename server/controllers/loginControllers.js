@@ -26,8 +26,11 @@ async function createLoginData(req, res) {
                 password: hashedPassword,
                 verified: false,
             });
+            console.log("createlogindata")
             const result = await newUser.save();
+            console.log("before sending email")
             await sendGmailOTP(result, res); // Send verification OTP
+            console.log("after sending email")
             return res.json({success:true,message:"email sent successfully"})
         }
     } catch (error) {
@@ -38,9 +41,9 @@ async function createLoginData(req, res) {
 
 async function getUserDetails(req,res) {
     try {
-        res.json({success:true,user:req.user,message:"user found"})
+        return res.json({success:true,user:req.user,message:"user found"})
     } catch (error) {
-        res.json({success:false,message:"error getting user"})
+        return res.json({success:false,message:"error getting user"})
     }
 }
 
@@ -146,7 +149,7 @@ async function postForgotPassword(req,res) {
                 email:email,
             }
             await sendGmailOTP(data,res); //send OTP
-            res.status(200).json({ success:true,message: "Enter new password", redirectTo: "/newpassword" });
+            return res.status(200).json({ success:true,message: "Enter new password", redirectTo: "/newpassword" });
         }
     } catch (error) {
         return res.json({
@@ -191,12 +194,15 @@ async function postPassword(req,res) {
                 message: "User doesn't exists! Please register first",
               });
         } else {
+            console.log("googlepassword")
             const newhashedPassword = await bcrypt.hash(req.body.password, 10);
-            console.log(user.password)
+            console.log(req.body.password)
             user.password=newhashedPassword
             user.username=username
+            console.log("before saving detail")
             await user.save()
-            res.status(200).json({ success:true,message: "User registered", redirectTo: "/happytails/user/main" });
+            console.log("after saving detail")
+            return res.status(200).json({ success:true,message: "User registered", redirectTo: "/happytails/user/main" });
         }
     }
 }
