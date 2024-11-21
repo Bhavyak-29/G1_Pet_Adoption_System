@@ -90,8 +90,9 @@ const AuthLogin = () => {
               isLoggedIn: false,
               isAdmin: false 
             }));
+            
+            dispatch(setUser({user:user}));
             console.log("dispatched use");
-            dispatch(setUse({user:user}));
             navigate("/googleAuthPassword");
           }
         }
