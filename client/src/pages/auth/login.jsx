@@ -5,7 +5,7 @@ import {  toast } from 'react-toastify';
 import CommonForm from '../../components/common/form';
 import { loginFormControls, loginGoogleControls } from '../../config';
 import { loginUser } from '../../store/auth-slice';
-import { setAuthenticated } from '../../store/auth-slice';
+import { setAuthenticated,setUser } from '../../store/auth-slice';
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 const initialState = {//initialize state 
   email: "",
@@ -90,6 +90,8 @@ const AuthLogin = () => {
               isLoggedIn: false,
               isAdmin: false 
             }));
+            console.log("dispatched use");
+            dispatch(setUse({user:user}));
             navigate("/googleAuthPassword");
           }
         }
