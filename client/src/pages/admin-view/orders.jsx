@@ -21,6 +21,7 @@ const AdminOrders = () => {
         { withCredentials: true }
       );
       setForms(response.data.forms);
+
     } catch (err) {
       setError(`Error fetching ${status} forms`);
     }
@@ -63,6 +64,7 @@ const AdminOrders = () => {
       if (newStatus === "approved") setApprovedForms((prev) => [...prev, id]);
       if (newStatus === "rejected") setRejectedForms((prev) => [...prev, id]);
       toast("Status updated successfully");
+      window.location.reload();
     } catch (err) {
       toast("Error updating status");
     }

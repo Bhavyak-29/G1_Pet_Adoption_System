@@ -29,7 +29,7 @@ const GoogleAuthPassword = () => {
     dispatch(newgooglepassword(formData)).then((data) => {//send request to backend
       if (data?.payload?.success) {
         toast(data?.payload?.message)
-        navigate("/shop/home") //login once password created
+        navigate("/pet/home") //login once password created
       } else {
         toast(data?.payload?.message);
       }

@@ -15,7 +15,7 @@ function CheckAuth({ children }) {
  
   if(!isAdmin && location.pathname === '/admin/pets') {
     if(isAuthenticated && isVerified && isLoggedIn) {
-      return <Navigate to = "/shop/home"/>
+      return <Navigate to = "/pet/home"/>
     } else {
       return <Navigate to="/login" />;
     }
@@ -24,7 +24,7 @@ function CheckAuth({ children }) {
     return <>{children}</>;
   }
   else if(isAuthenticated && isVerified && isLoggedIn && (location.pathname === "/login" || location.pathname==="/signup")) {
-    return <Navigate to = "/shop/home"/>
+    return <Navigate to = "/pet/home"/>
   }
   else if (isAuthenticated && isVerified) {
     if (location.pathname === "/verifyOTP") {
@@ -45,7 +45,7 @@ function CheckAuth({ children }) {
           if (user?.admin === true) {
             return <Navigate to="/admin/pets" />;
           } else {
-            return <Navigate to="/shop/home" />;
+            return <Navigate to="/pet/home" />;
           }
         }
       }

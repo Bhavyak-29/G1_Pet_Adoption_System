@@ -74,7 +74,7 @@ const AuthRegister = () => {
                 isLoggedIn: true,
                 isAdmin: false, 
               }));
-              navigate("/shop/home");
+              navigate("/pet/home");
             }
           } else {
             dispatch(setAuthenticated({ //if first time then send to create a password first

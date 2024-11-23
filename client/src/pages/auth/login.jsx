@@ -30,7 +30,7 @@ const AuthLogin = () => {
         if(data?.payload?.user?.admin) {
           navigate("/admin/pets")
         } else {
-          navigate("/shop/home")
+          navigate("/pet/home")
         }
       } else {
         if(data.payload.message === "User is not verified") {
@@ -81,7 +81,7 @@ const AuthLogin = () => {
                 isLoggedIn: true,
                 isAdmin: false, 
               }));
-              navigate("/shop/home");
+              navigate("/pet/home");
             }
           } else {
             dispatch(setAuthenticated({ //if first time then send to create a password first
