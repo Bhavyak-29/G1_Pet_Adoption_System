@@ -201,8 +201,23 @@ async function postPassword(req,res) {
             user.username=username
             console.log("before saving detail")
             await user.save()
-            console.log("after saving detail")
-            return res.status(200).json({ success:true,message: "User registered", redirectTo: "/happytails/user/main" });
+            const token=setUser(user)
+            res.cookie("uid", token, { 
+                httpOnly: true, // The cookie is not accessible via JavaScript
+                sameSite: "None", // Restrict the cookie to same-site requests
+                path: "/",
+                secure:true
+              });
+            if(user.admin===true) {
+                const atoken=setAdmin(user)
+                //res.cookie("aid",atoken);
+                res.cookie("aid", atoken, { httpOnly: true, sameSite: "None",path:"/",secure:true });
+                return res.json({success:true,message:"Logged in successfully",user:user})//create cookie
+                // return res.redirect("/happytails/api/admin")
+            }
+            // return res.json({success:true,message:"Logged in successfully",user:user})//create cookie
+            // console.log("after saving detail")
+            return res.status(200).json({ success:true,message: "User registered and Logged In", redirectTo: "/happytails/user/main" });
         }
     }
 }
