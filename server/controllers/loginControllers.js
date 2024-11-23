@@ -71,10 +71,10 @@ async function checkLoginCredential(req, res) {
                 const atoken=setAdmin(user)
                 //res.cookie("aid",atoken);
                 res.cookie("aid", atoken, { httpOnly: true, sameSite: "None",path:"/",secure:true });
-                return res.json({success:true,message:"logged in successfully",user:user})//create cookie
+                return res.json({success:true,message:"Logged in successfully",user:user})//create cookie
                 // return res.redirect("/happytails/api/admin")
             }
-            return res.json({success:true,message:"logged in successfully",user:user})//create cookie
+            return res.json({success:true,message:"Logged in successfully",user:user})//create cookie
         } else {
             return res.json({success:false, message: "Invalid email or password." }); //render login
         } 
@@ -177,7 +177,7 @@ async function logout(req,res) {
 
 //create password process for googleAuth
 async function postPassword(req,res) {
-    const email=req.user.email;
+    const email=req.body.email;
     const username=req.body.username;
     const password=req.body.password;
     const rpassword=req.body.rpassword;
