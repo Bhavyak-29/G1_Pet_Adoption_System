@@ -188,7 +188,7 @@ export const PetViewHeaderMenuItems = [
   {
     id: "pets",
     label: "Pets",
-    path: "/shop/listing",
+    path: "/pet/listing",
   }
 ];
 
