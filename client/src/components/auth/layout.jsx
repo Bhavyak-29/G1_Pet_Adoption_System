@@ -134,7 +134,7 @@ const AuthLayout = () => {
                   <div className="w-2/3 h-2/3 relative rounded-full bg-zinc-900">
                     <div
                       style={{
-                        transform: translate(-50%, -50%) rotate(${rotation[0]}deg),
+                        transform: `translate(-50%, -50%) rotate(${rotation[0]}deg)`,
                         transition: "transform ease-in",
                       }}
                       className="line absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] w-full h-6"
@@ -149,7 +149,7 @@ const AuthLayout = () => {
                   <div className="w-2/3 h-2/3 relative rounded-full bg-zinc-900">
                     <div
                       style={{
-                        transform: translate(-50%, -50%) rotate(${rotation[1]}deg), // Use rotation[1] for the second eye
+                        transform: `translate(-50%, -50%) rotate(${rotation[1]}deg)`, // Use rotation[1] for the second eye
                         transition: "transform ease-in", // Smooth transition
                       }}
                       className="line absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] w-full h-6"
