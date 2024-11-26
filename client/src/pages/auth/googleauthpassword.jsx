@@ -67,7 +67,15 @@ const GoogleAuthPassword = () => {
           formControls={passwordGoogleControls}
           ButtonText={"Create Account"}
           formData={formData}
-          setFormData={setFormData}
+          setFormData={(updatedFormData) => {
+            setFormData(updatedFormData);
+            // if (updatedFormData.password !== formData.password) {
+            //   checkPasswordStrength(updatedFormData.password); 
+            // }
+            if (updatedFormData.password) {
+              checkPasswordStrength(updatedFormData.password); 
+            }
+          }}
           onSubmit={onSubmit}
           />
           {formData.password && (
