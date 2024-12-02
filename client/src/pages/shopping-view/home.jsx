@@ -8,7 +8,7 @@ const ShoppingHome = () => {
       {/* Header Section */}
       <div className="text-center mt-10">
         <h1 className="text-4xl font-bold text-[#013756] mb-4">Welcome to HappyTails</h1>
-        <p className="text-lg font-bold text-[#013756] p-4 rounded">
+        <p className="text-2xl font-bold text-[#013756] p-4 rounded">
           Discover your next best friend from our wide range of lovable pets.
         </p>
       </div>
@@ -17,7 +17,7 @@ const ShoppingHome = () => {
 
       {/* Footer Section */}
       <div className="text-center my-10">
-        <p className="text-lg font-bold text-[#013756] p-4 rounded">
+        <p className="text-2xl font-bold text-[#013756] p-4 rounded">
           Adopt, love, and cherish a pet today. A little love goes a long way.
         </p>
         <small className="text-sm text-[#013756] block">
