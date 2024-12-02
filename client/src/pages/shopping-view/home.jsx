@@ -17,17 +17,17 @@ const ShoppingHome = () => {
 
       {/* Footer Section */}
       <div className="text-center my-10">
-        <p className="text-3xl font-bold text-[#013756] p-4 rounded">
+        <p className="text-3xl font-bold text-black p-4 rounded">
           Adopt, love, and cherish a pet today. A little love goes a long way.
         </p>
-        <small className="text-sm font-bold text-[#013756] block mb-4">
+        <small className="text-sm font-bold text-black block mb-4">
           Contact us at happytailsg1@gmail.com
         </small>
         <a
           href="https://github.com/Om-Lachake/G1_Pet_Adoption_System"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm text-[#013756] font-bold underline hover:text-[#02589b]"
+          className="text-sm text-black font-bold underline hover:text-[#02589b]"
         >
           Review our work on GitHub
         </a>
