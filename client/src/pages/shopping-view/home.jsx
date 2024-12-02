@@ -7,7 +7,7 @@ const ShoppingHome = () => {
     <div className="min-h-screen bg-[#f0f4f8] flex flex-col items-center bg-auto bg-center bg-fixed bg-[url('/images/Userbg.jpg')] ">
       {/* Header Section */}
       <div className="text-center mt-10">
-        <h1 className="text-4xl font-bold text-[#013756] mb-4">Welcome to HappyTails</h1>
+        <h1 className="text-4xl font-bold text-black mb-4">Welcome to HappyTails</h1>
         <p className="text-3xl font-bold text-[#013756] p-4 rounded">
           Discover your next best friend from our wide range of lovable pets.
         </p>
